@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <title>Frontend Mentor | Todo app</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="title-wrapper">
+      <div class="title">
+        <h1>ΝΑ ΚΑΝΩ</h1>
+        <input type="image" src="images/icon-moon.svg" />
+      </div>
+      <div class="text-input">
+        <input id="task-name" type="text" placeholder="Προσθέστε αγγαρεία..." maxlength="34" required>
+        <input type="button" value="Προσθήκη" id="add">
+      </div>
+    </div>
+    <div class="answers-wrapper"></div>
+    <div class="app-controls">
+      <p class="counter"></p>
+      <div class="state">
+        <a href="">Όλα</a>
+        <a href="">Ενεργά</a>
+        <a href="">Ολοκληρωμένα</a>
+      </div>
+      <div class="completed">
+        <a href="#">Διαγραφή ολοκληρωμένων</a>
+      </div>
+    </div>
+    <h6 class="instructions">Drag and drop to reorder list (not working)</h6>
+    <script src="script.js"></script>
+  </body>
+
+</html>
+<!-- <div class="attribution">
+  Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+  Coded by <a href="#">Your Name Here</a>.
+</div> -->
