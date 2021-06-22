@@ -193,3 +193,11 @@ body {
 .instructions {
 	margin-top: 20px;
 }
+
+.draggable {
+	cursor: move;
+}
+
+.dragging {
+	opacity: 0.5;
+}
