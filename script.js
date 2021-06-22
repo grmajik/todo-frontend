@@ -20,7 +20,6 @@ function checkControlsState(divsCounter) {
 clearTasks.addEventListener('click', (e) => {
 	const arr = [...answersWrapper.childNodes];
 	for (let i = 0; i < arr.length; i++) {
-		console.log(arr[i].firstChild.checked);
 		if (arr[i].firstChild.checked) {
 			answersWrapper.removeChild(arr[i]);
 		}
@@ -28,11 +27,12 @@ clearTasks.addEventListener('click', (e) => {
 	checkControlsState(divsCounter);
 })
 
-add.addEventListener('click', () => {
+add.addEventListener('click', (e) => {
 	// if (task.value == "") {
 	// 	alert('Please enter a task!');
 	// 	return;
 	// } else {}
+	e.preventDefault();
 	const newDiv = document.createElement('div');
 	newDiv.className = "answer-input";
 	const newCheckbox = document.createElement('input');
