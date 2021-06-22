@@ -47,6 +47,10 @@ function getDragAfterElement(container, y) {
 	}, { offset: Number.NEGATIVE_INFINITY }).element;
 }
 
+///////////////////////////////////////
+//// END OF SORTABLE FUNCTIONALITY ////
+///////////////////////////////////////
+
 let divsCounter = 0;
 
 function checkControlsState(divsCounter) {
