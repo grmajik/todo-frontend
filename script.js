@@ -7,7 +7,11 @@ const counter = document.querySelector('.counter');
 const appControls = document.querySelector('.app-controls');
 const clearTasks = document.querySelector('.completed');
 
-// Listen in for drag events globally
+////////////////////////////
+// SORTABLE FUNCTIONALITY //
+////////////////////////////
+
+// Listen in for drag events globally //
 
 const container = document.querySelector('.answers-wrapper');
 
@@ -42,7 +46,6 @@ function getDragAfterElement(container, y) {
 		}
 	}, { offset: Number.NEGATIVE_INFINITY }).element;
 }
-
 
 let divsCounter = 0;
 
