@@ -14,13 +14,13 @@
   <body>
     <div class="title-wrapper">
       <div class="title">
-        <h1>ΝΑ ΚΑΝΩ</h1>
+        <h1>σημερα να</h1>
         <input type="image" src="images/icon-moon.svg" />
       </div>
-      <div class="text-input">
-        <input id="task-name" type="text" placeholder="Προσθέστε αγγαρεία..." maxlength="34" required>
-        <input type="button" value="Προσθήκη" id="add">
-      </div>
+      <form class="text-input">
+        <input type="text" placeholder="Προσθέστε αγγαρεία..." maxlength="34" id="task-name">
+        <input type="submit" value="Προσθήκη" id="add">
+      </form>
     </div>
     <div class="answers-wrapper"></div>
     <div class="app-controls">
@@ -31,7 +31,7 @@
         <a href="">Ολοκληρωμένα</a>
       </div>
       <div class="completed">
-        <a href="#">Διαγραφή ολοκληρωμένων</a>
+        <a href="#">Διαγραφή <br> ολοκληρωμένων</a>
       </div>
     </div>
     <h6 class="instructions">Drag and drop to reorder list (not working)</h6>
