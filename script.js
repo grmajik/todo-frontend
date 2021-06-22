@@ -43,7 +43,7 @@ add.addEventListener('click', (e) => {
 	newText.value = task.value;
 	const newButton = document.createElement('input');
 	newButton.type = 'button';
-	newButton.value = 'Αφαίρεση';
+	newButton.value = 'Remove';
 	newButton.id = "remove";
 	newDiv.appendChild(newCheckbox);
 	newDiv.appendChild(newText);
