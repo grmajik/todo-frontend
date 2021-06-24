@@ -216,7 +216,7 @@ body {
 
 .draggable {
 	cursor: move;
-	transition: all 1s ease-in;
+	transition: background-color 1s ease-in, border-bottom 1s ease-in, color 1s ease-in;
 }
 
 .dragging {
