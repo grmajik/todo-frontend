@@ -26,15 +26,17 @@ body {
 	position: relative;
 }
 
-.img--1 {
+.img--1,
+.img--2 {
 	width: 100%;
 	position: absolute;
+}
+
+.img--1 {
 	z-index: -1;
 }
 
 .img--2 {
-	width: 100%;
-	position: absolute;
 	z-index: -2;
 }
 
@@ -65,6 +67,26 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	position: relative;
+}
+
+.toggle {
+	background-color: transparent;
+	cursor: pointer;
+	position: relative;
+}
+
+.show {
+	opacity: 1;
+	transition: all 1s ease-in;
+}
+
+.hide {
+	position: absolute;
+	top: 0;
+	right: 0;
+	opacity: 0;
+	transition: all 1s ease-in;
 }
 
 .title h1 {
@@ -199,19 +221,6 @@ body {
 
 .dragging {
 	opacity: 0.5;
-}
-
-.toggle {
-	background-color: transparent;
-}
-
-.show {
-	display: initial;
-	cursor: pointer;
-}
-
-.hide {
-	display: none;
 }
 
 /* LIGHT THEME SETTINGS */
