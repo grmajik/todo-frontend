@@ -19,12 +19,33 @@ body {
 	flex-direction: column;
 	align-items: center;
 	justify-content: flex-start;
-
-	background-color: #fafafa;
-	background-image: url('images/bg-desktop-light.jpg');
 	background-size: contain;
 	background-position: top center;
 	background-repeat: no-repeat;
+
+	position: relative;
+}
+
+.img--1 {
+	width: 100%;
+	position: absolute;
+	z-index: -1;
+}
+
+.img--2 {
+	width: 100%;
+	position: absolute;
+	z-index: -2;
+}
+
+.show-image {
+	opacity: 1;
+	transition: all 1s ease-in;
+}
+
+.hide-image {
+	transition: all 1s ease-in;
+	opacity: 0;
 }
 
 .title-wrapper,
@@ -42,7 +63,7 @@ body {
 	margin: 75px 0 35px 0;
 
 	display: flex;
-	align-items: baseline;
+	align-items: center;
 	justify-content: space-between;
 }
 
@@ -51,11 +72,6 @@ body {
 	letter-spacing: 12px;
 	font-size: 42px;
 	color: hsl(0, 0%, 98%);
-}
-
-.title img {
-	max-width: 100%;
-	height: auto;
 }
 
 .text-input {
@@ -73,13 +89,11 @@ body {
 	font-size: 17px;
 	font-weight: 400;
 	border-radius: 10px;
+	transition: all 1s ease-in;
 }
 
 .answer-input {
 	position: relative;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
 }
 
 .answer-input input[type="text"] {
@@ -87,9 +101,7 @@ body {
 	height: 60px;
 	padding-left: 70px;
 	font-size: 17px;
-	color: lightcoral;
-	font-weight: 700;
-	border-bottom: 1px solid #CCCCCC;
+	font-weight: 500;
 }
 
 .answer-input input[type="checkbox"] {
@@ -111,14 +123,14 @@ body {
 		url(images/icon-check.svg),
 		linear-gradient(to bottom right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
 	background-size: 100px cover;
-	background-position: center center;
+	background-position: center;
 	background-repeat: no-repeat;
 }
 
 .answer-input input[type="checkbox"]:checked~input[type="text"] {
 	text-decoration: line-through;
 	font-style: italic;
-	font-weight: 400;
+	font-weight: 300;
 	color: rgba(0, 0, 0, 0.2);
 }
 
@@ -139,7 +151,6 @@ body {
 .text-input input[type="submit"],
 .answer-input input[type="button"] {
 	background-color: gray;
-	transition: all .2s;
 }
 
 .text-input input[type="submit"]:hover {
@@ -158,16 +169,15 @@ body {
 
 .app-controls {
 	height: 40px;
-	display: none;
+	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: center;
 	padding: 8px 24px;
 	border-radius: 0 0 10px 10px;
 	margin-top: 20px;
 }
 
-.app-controls a,
-.app-controls p {
+.app-controls a {
 	color: #869af9;
 	text-decoration: none;
 	font-size: 12px;
@@ -177,27 +187,43 @@ body {
 	text-shadow: 1px 0 0 currentcolor;
 }
 
-.app-controls>* {
-	width: 100%;
-}
-
-.state {
-	display: flex;
-	justify-content: space-between;
-}
-
-.completed {
-	text-align: right;
-}
-
 .instructions {
-	margin-top: 20px;
+	margin-top: 15px;
+	color: #a9a9b4;
 }
 
 .draggable {
 	cursor: move;
+	transition: all 1s;
 }
 
 .dragging {
 	opacity: 0.5;
+}
+
+.toggle {
+	background-color: transparent;
+}
+
+.show {
+	display: initial;
+	cursor: pointer;
+}
+
+.hide {
+	display: none;
+}
+
+/* LIGHT THEME SETTINGS */
+
+.light {
+	background-color: #fafafa;
+	transition: all 1s ease-in;
+}
+
+/* DARK THEME SETTINGS */
+
+.dark {
+	background-color: #181824;
+	transition: all 1s ease-in;
 }

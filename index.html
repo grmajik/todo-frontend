@@ -8,15 +8,20 @@
     <title>Frontend Mentor | Todo app</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
     <script src="script.js" defer></script>
   </head>
 
-  <body>
+  <body class="light" id="body">
+    <img src="images/bg-desktop-light.jpg" alt="light" class="img--1 show-image">
+    <img src="images/bg-desktop-dark.jpg" alt="dark" class="img--2 hide-image">
     <div class="title-wrapper">
       <div class="title">
         <h1>todo</h1>
-        <input type="image" src="images/icon-moon.svg" />
+        <button class="toggle">
+          <img src="images/icon-moon.svg" class="icon-moon show">
+          <img src="images/icon-sun.svg" class="icon-sun hide">
+        </button>
       </div>
       <form class="text-input">
         <input type="text" placeholder="Create a new task.." maxlength="34" id="task-name">
@@ -25,15 +30,9 @@
     </div>
     <div class="answers-wrapper"></div>
     <div class="app-controls">
-      <p class="counter"></p>
-      <div class="state">
-        <a href="">All</a>
-        <a href="">Active</a>
-        <a href="">Completed</a>
-      </div>
       <a href="#" class="completed">Clear completed</a>
     </div>
-    <h6 class="instructions">Drag and drop to reorder list</h6>
+    <h5 class="instructions">Drag and drop to reorder list</h5>
   </body>
 
 </html>
