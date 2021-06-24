@@ -17,63 +17,84 @@ const tog = document.querySelector('.toggle');
 const body = document.getElementById('body');
 const img1 = document.querySelector('.img--1');
 const img2 = document.querySelector('.img--2');
+let currentTheme = localStorage.getItem("theme");
 let answers;
+
+function darkTheme() {
+	iconMoon.classList.remove('show');
+	iconMoon.classList.add('hide');
+	iconSun.classList.remove('hide');
+	iconSun.classList.add('show');
+
+	body.classList.remove('light');
+	body.classList.add('dark');
+	task.style.backgroundColor = "#25273c";
+	task.style.color = "hsl(236, 9%, 61%)";
+
+	img1.classList.remove('show-image');
+	img1.classList.add('hide-image');
+	img2.classList.remove('hide-image');
+	img2.classList.add('show-image');
+
+	if (answers == null) {
+		return;
+	} else if (answers) {
+		answers.forEach(answer => {
+			answer.style.backgroundColor = "#25273c";
+			answer.style.color = "#b6b8d0";
+			answer.style.borderBottom = "1px solid #323449";
+		})
+	}
+}
+
+function lightTheme() {
+	iconMoon.classList.remove('hide');
+	iconMoon.classList.add('show');
+	iconSun.classList.remove('show');
+	iconSun.classList.add('hide');
+	body.classList.remove('dark');
+	body.classList.add('light');
+	task.style.backgroundColor = "hsl(0, 0%, 98%)";
+	task.style.color = "hsl(236, 9%, 61%)";
+
+	img2.classList.remove('show-image');
+	img2.classList.add('hide-image');
+	img1.classList.remove('hide-image');
+	img1.classList.add('show-image');
+
+	if (answers == null) {
+		return;
+	} else if (answers) {
+		answers.forEach(answer => {
+			answer.style.backgroundColor = "#ffffff";
+			answer.style.color = "#616276";
+			answer.style.borderBottom = "1px solid #CCCCCC";
+		})
+	}
+}
 
 tog.addEventListener('click', (e) => {
 	e.preventDefault();
-	if (iconMoon.classList.contains('show')) {
-		iconMoon.classList.remove('show');
-		iconMoon.classList.add('hide');
-		iconSun.classList.remove('hide');
-		iconSun.classList.add('show');
-		body.classList.remove('light');
-		body.classList.add('dark');
-		task.style.backgroundColor = "#25273c";
-		task.style.color = "hsl(236, 9%, 61%)";
-		if (img1.classList.contains('show-image')) {
-			img1.classList.remove('show-image');
-			img1.classList.add('hide-image');
-			img2.classList.remove('hide-image');
-			img2.classList.add('show-image');
-		}
-
-		if (answers == null) {
-			return;
-		} else if (answers) {
-			answers.forEach(answer => {
-				answer.style.backgroundColor = "#25273c";
-				answer.style.color = "#b6b8d0";
-				answer.style.borderBottom = "1px solid #323449";
-			})
-		}
-	} else if (iconMoon.classList.contains('hide')) {
-		iconMoon.classList.remove('hide');
-		iconMoon.classList.add('show');
-		iconSun.classList.remove('show');
-		iconSun.classList.add('hide');
-		body.classList.remove('dark');
-		body.classList.add('light');
-		task.style.backgroundColor = "hsl(0, 0%, 98%)";
-		task.style.color = "hsl(236, 9%, 61%)";
-
-		if (img2.classList.contains('show-image')) {
-			img2.classList.remove('show-image');
-			img2.classList.add('hide-image');
-			img1.classList.remove('hide-image');
-			img1.classList.add('show-image');
-		}
-
-		if (answers == null) {
-			return;
-		} else if (answers) {
-			answers.forEach(answer => {
-				answer.style.backgroundColor = "#ffffff";
-				answer.style.color = "#616276";
-				answer.style.borderBottom = "1px solid #CCCCCC";
-			})
-		}
+	if (body.classList.contains('dark')) {
+		lightTheme();
+		currentTheme = "light";
+		localStorage.setItem("theme", currentTheme);
+	} else if (body.classList.contains('light')) {
+		darkTheme();
+		currentTheme = "dark"
+		localStorage.setItem("theme", currentTheme);
 	}
 })
+
+function checkTheme(theme) {
+	if (theme == "light") {
+		lightTheme();
+	} else if (theme == "dark") {
+		darkTheme();
+	}
+}
+
+checkTheme(currentTheme);
 
 /////////////////////////////////
 ///// END OF THEME SWITCHER /////
