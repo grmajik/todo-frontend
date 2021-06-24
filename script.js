@@ -83,7 +83,8 @@ tog.addEventListener('click', (e) => {
 //// BEGIN SORTABLE FUNCTIONALITY ////
 //////////////////////////////////////
 
-// Listen in for drag events globally //
+// Listen in for drag events globally since
+// the only thing that can be dragged is each task
 
 const container = document.querySelector('.answers-wrapper');
 
@@ -119,51 +120,80 @@ function getDragAfterElement(container, y) {
 	}, { offset: Number.NEGATIVE_INFINITY }).element;
 }
 
-////////////////////////////////////////
-//// END OF SORTABLE FUNCTIONALITY /////
-////////////////////////////////////////
+//////////////////////////////////////////////
+//////// END OF SORTABLE FUNCTIONALITY ///////
+//////////////////////////////////////////////
 
 
-/////////////////////////////////////////
-/////// BEGIN BASIC FUNCTIONALITY  //////
-/////////////////////////////////////////
+//////////////////////////////////////////////
+///////// BEGIN BASIC FUNCTIONALITY  /////////
+//////////////////////////////////////////////
 
 let checkboxes;
 
-add.addEventListener('click', (e) => {
-	e.preventDefault();
-	const newDiv = document.createElement('div');
+const LOCALSTORAGE_KEY = "answers";
+
+function saveToLocalStorage() {
+	if (answers) {
+		const answersAsTextArray = Array.from(answers).map(
+			(answer) => answer.value
+		);
+		localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(answersAsTextArray));
+	}
+}
+
+function fetchFromLocalStorage() {
+	const answersAsTextArray = localStorage.getItem(LOCALSTORAGE_KEY);
+	if (answersAsTextArray) {
+		JSON.parse(answersAsTextArray).forEach((answer) => {
+			const newDiv = generateNewItem(answer);
+			answersWrapper.appendChild(newDiv);
+		});
+	}
+}
+
+function generateNewItem(value) {
+	const newDiv = document.createElement("div");
 	newDiv.className = "answer-input";
 	newDiv.draggable = true;
-	const newCheckbox = document.createElement('input');
+	const newCheckbox = document.createElement("input");
 	newCheckbox.type = "checkbox";
-	const newText = document.createElement('input');
+	const newText = document.createElement("input");
 	newText.type = "text";
 	newText.className = "text draggable";
-	newText.value = task.value;
+	newText.value = value;
 	newText.readOnly = true;
-	if (body.classList.contains('dark')) {
+	if (body.classList.contains("dark")) {
 		newText.style.backgroundColor = "#25273c";
 		newText.style.borderBottom = "1px solid #323449";
 		newText.style.color = "#b6b8d0";
-	} else if (body.classList.contains('light')) {
+	} else if (body.classList.contains("light")) {
 		newText.style.backgroundColor = "#ffffff";
 		newText.style.borderBottom = "1px solid #CCCCCC";
 		newText.style.color = "#616276";
 	}
-	const newButton = document.createElement('input');
-	newButton.type = 'button';
-	newButton.value = 'Remove';
+	const newButton = document.createElement("input");
+	newButton.type = "button";
+	newButton.value = "Remove";
 	newDiv.appendChild(newCheckbox);
 	newDiv.appendChild(newText);
 	newDiv.appendChild(newButton);
+	return newDiv;
+}
+
+add.addEventListener('click', (e) => {
+	e.preventDefault();
+	const newDiv = generateNewItem(task.value);
 	answersWrapper.appendChild(newDiv);
-	// counter.textContent = `${divsCounter+= 1} items left`;
-	// checkControlsState(divsCounter);
 	task.value = '';
 	answers = document.querySelectorAll('.draggable');
 	checkboxes = document.querySelectorAll('.answer-input input[type="checkbox"]');
+	saveToLocalStorage();
 })
+
+fetchFromLocalStorage();
+
+// window.onload ()
 
 ///////////////////////////////////////
 ///// END OF BASIC FUNCTIONALITY //////
