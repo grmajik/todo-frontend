@@ -214,21 +214,9 @@ add.addEventListener('click', (e) => {
 
 fetchFromLocalStorage();
 
-// window.onload ()
-
 ///////////////////////////////////////
 ///// END OF BASIC FUNCTIONALITY //////
 ///////////////////////////////////////
-
-// let divsCounter = 0;
-
-// function checkControlsState(divsCounter) {
-// 	if (divsCounter > 0) {
-// 		appControls.style.display = "flex";
-// 	} else {
-// 		appControls.style.display = "none";
-// 	}
-// }
 
 clearTasks.addEventListener('click', (e) => {
 	const arr = [...answersWrapper.childNodes];
@@ -237,27 +225,25 @@ clearTasks.addEventListener('click', (e) => {
 			answersWrapper.removeChild(arr[i]);
 		}
 	}
-	// checkControlsState(divsCounter);
 })
 
+
+
+////////////////////////////////////////////////////////////////////////////////////
+///////// REMOVE TASK FROM LOCAL STORAGE WHEN REMOVING WITH REMOVE BUTTON///////////
+////////////////////////////////////////////////////////////////////////////////////
+
 answersWrapper.addEventListener('click', e => {
+	let newArray;
+	const answersAsTextArray = localStorage.getItem(LOCALSTORAGE_KEY);
+	const array = JSON.parse(answersAsTextArray);
 	if (e.target.type === "button") {
-		// if (e.target.parentElement.firstChild.checked) {
-		// 	counter.textContent = `${divsCounter} items left`;
-		// } else {
-		// 	counter.textContent = `${divsCounter -= 1} items left`;
-		// }
-		answersWrapper.removeChild(e.target.parentElement);
+		for (let i = 0; i < array.length; i++) {
+			if (array[i] === e.target.parentNode.children[1].value) {
+				newArray = array.filter(item => item !== array[i]);
+				localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(newArray));
+				answersWrapper.removeChild(e.target.parentElement);
+			}
+		}
 	}
-	// checkControlsState(divsCounter);
 });
-
-// answersWrapper.addEventListener('change', (e) => {
-// 	if (e.target.checked) {
-// 		counter.textContent = `${divsCounter -= 1} items left`
-// 	} else if (e.target.checked === false) {
-// 		counter.textContent = `${divsCounter += 1} items left`
-// 	}
-// })
-
-// checkControlsState(divsCounter);
