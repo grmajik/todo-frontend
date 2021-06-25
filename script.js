@@ -182,7 +182,12 @@ function generateNewItem(value) {
 	const newText = document.createElement("input");
 	newText.type = "text";
 	newText.className = "text draggable";
-	newText.value = value;
+	if (value == "") {
+		alert('This is required!');
+		return;
+	} else {
+		newText.value = value;
+	}
 	newText.readOnly = true;
 	if (body.classList.contains("dark")) {
 		newText.style.backgroundColor = "#25273c";
@@ -225,9 +230,7 @@ clearTasks.addEventListener('click', (e) => {
 			answersWrapper.removeChild(arr[i]);
 		}
 	}
-})
-
-
+});
 
 ////////////////////////////////////////////////////////////////////////////////////
 ///////// REMOVE TASK FROM LOCAL STORAGE WHEN REMOVING WITH REMOVE BUTTON///////////
